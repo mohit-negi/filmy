@@ -1,5 +1,5 @@
 
-import {StyleSheet, View, Image, useWindowDimensions} from 'react-native';
+import {StyleSheet, View, Image, useWindowDimensions, TouchableOpacity} from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
 import Animated, {
   useSharedValue,
@@ -11,7 +11,7 @@ import Animated, {
 import MovieCardPagination from './MovieCardPagination';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
-const  MovieCard = ({data, autoPlay, pagination}) => {
+const  MovieCard = ({data, autoPlay, pagination,item}) => {
   const scrollViewRef = useAnimatedRef(null);
   const interval = useRef();
   const [isAutoPlay, setIsAutoPlay] = useState(autoPlay);
@@ -33,7 +33,7 @@ const  MovieCard = ({data, autoPlay, pagination}) => {
   });
     const navigation = useNavigation();
     const handleClick=()=>{
-        navigation.navigate('Movie',item)
+        navigation.navigate('MovieScreen',item)
     }
   useEffect(() => {
     if (isAutoPlay === true) {
@@ -85,13 +85,13 @@ const  MovieCard = ({data, autoPlay, pagination}) => {
             return <View style={{width: SPACER}} key={index} />;
           }
           return (
-            <TouchableWithoutFeedback key={index}>
+            <TouchableOpacity key={index} onPress={handleClick}>
             <View style={{width: SIZE}} key={index}>
               <Animated.View style={[styles.imageContainer, style]}>
                 <Image source={item.image} style={styles.image} />
               </Animated.View>
             </View>
-            </TouchableWithoutFeedback>
+            </TouchableOpacity>
           );
         })}
       </Animated.ScrollView>
