@@ -10,6 +10,7 @@ import MovieList from './MovieList';
 import { useNavigation } from '@react-navigation/native';
 import axiosInstance,{ urls } from '../api/jsonServer';
 import Loading from '../component/Loading';
+import { TMDB_API_KEY } from '@env'
 const ios = Platform.OS === 'ios';
 
 function HomeScreen() {
@@ -24,8 +25,7 @@ function HomeScreen() {
   const getUpcomingMovies = async () => {
     try {
       setLoading(true);
-      const url = urls.getUpcomingMovies + '?api_key=51a1d4627fd9c868eb918017e8c43370';
-      console.log(url);
+      const url = urls.getUpcomingMovies + `?api_key=${TMDB_API_KEY}`;
       const response = await axiosInstance.get(url);
       // Handle the response data here
       // console.log(response.data)
@@ -41,8 +41,7 @@ function HomeScreen() {
   const getTrendingMovies = async () => {
     try {
       setLoading(true);
-      const url = urls.getTrendingMovies + '?api_key=51a1d4627fd9c868eb918017e8c43370';
-      console.log(url);
+      const url = urls.getTrendingMovies + `?api_key=${TMDB_API_KEY}`;
       const response = await axiosInstance.get(url);
       // Handle the response data here
       setTrending(response.data.results);
@@ -57,8 +56,7 @@ function HomeScreen() {
   const getTopRatedMovies = async () => {
     try {
       setLoading(true);
-      const url = urls.getTopRatedMovies + '?api_key=51a1d4627fd9c868eb918017e8c43370';
-      console.log(url);
+      const url = urls.getTopRatedMovies + `?api_key=${TMDB_API_KEY}`;
       const response = await axiosInstance.get(url);
       // Handle the response data here
       setTopRated(response.data.results);
@@ -73,8 +71,7 @@ function HomeScreen() {
   const getPopularMovies = async () => {
     try {
       setLoading(true);
-      const url = urls.getPopularMovies + '?api_key=51a1d4627fd9c868eb918017e8c43370';
-      console.log(url);
+      const url = urls.getPopularMovies + `?api_key=${TMDB_API_KEY}`;
       const response = await axiosInstance.get(url);
       // Handle the response data here
       // console.log(response.data.results)

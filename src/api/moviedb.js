@@ -1,13 +1,18 @@
 import axios from "axios";
-const apikey = '51a1d4627fd9c868eb918017e8c43370';
-const apiToken = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MWExZDQ2MjdmZDljODY4ZWI5MTgwMTdlOGM0MzM3MCIsInN1YiI6IjYzOTJmMzY5NmUwZDcyMDBjMTk4NTZhZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.t5lc3rRSksLl6b7jlOSetRSMCFmUiNCiY67ajFkWB5c'
+import { TMDB_API_KEY } from '@env'
+
+const apikey = `${TMDB_API_KEY}`
+const apiToken =
+  'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MWExZDQ2MjdmZDljODY4ZWI5MTgwMTdlOGM0MzM3MCIsInN1YiI6IjYzOTJmMzY5NmUwZDcyMDBjMTk4NTZhZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.t5lc3rRSksLl6b7jlOSetRSMCFmUiNCiY67ajFkWB5c'
 //endpoints
 const baseUrl = 'https://api.themoviedb.org/3'
-const trendingMovies = `${baseUrl}/trending/movie/day?api_key=${apikey}`;
-const upcomingMovies = `${baseUrl}/movie/upcoming?access_token=${apiToken}`;
+const trendingMovies = `${baseUrl}/trending/movie/day?api_key=${apikey}`
+const upcomingMovies = `${baseUrl}/movie/upcoming?access_token=${apiToken}`
 // const popularMovies = `${baseUrl}/movie/upcoming?access_token=${apiToken}`;
-const topRated = `${baseUrl}/movie/top_rated?api_key=${apikey}`;
+const topRated = `${baseUrl}/movie/top_rated?api_key=${apikey}`
 const popularMovies = `${baseUrl}/popular?api_key=${apikey}`
+export const image800 = (path) =>
+  path ? `https://image.tmdb.org/t/p/w780/${path}` : null
 export const image500 = path=>path? `https://image.tmdb.org/t/p/w500/${path}` : null;
 export const image342 = path=>path? `https://image.tmdb.org/t/p/w342/${path}` : null;
 export const image185 = path=>path? `https://image.tmdb.org/t/p/w185/${path}` : null;
